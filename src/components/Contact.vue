@@ -1,19 +1,36 @@
 <script setup>
-import { reactive } from 'vue';
+import { ref } from 'vue'
+import emailjs from 'emailjs-com'
+import { useRouter } from 'vue-router'
+const router = useRouter()
 
-const form = reactive({
+// Contact form state
+const form = ref({
   name: '',
   email: '',
-  message: '',
-});
+  message: ''
+})
+const status = ref('')
 
-function submitForm() {
-  console.log('Form submitted:', form);
-  alert('Thank you for reaching out! We will get back to you soon.');
-  // You would typically send `form` to your backend API here
-  form.name = '';
-  form.email = '';
-  form.message = '';
+// Send email function
+const sendEmail = () => {
+  const serviceID = 'Mcleans_service'
+  const templateID = 'Mcleans_template'
+  const publicKey = 'OlB__5UCYjkQjHNiL'
+
+  emailjs.send(serviceID, templateID, {
+    user_name: form.value.name,
+    user_email: form.value.email,
+    message: form.value.message,
+  }, publicKey)
+    .then(() => {
+      form.value = { name: '', email: '', message: '' }
+      router.push('/thank-you') // redirect to confirmation page
+    })
+    .catch((error) => {
+      console.error(error)
+      status.value = 'Failed to send message.'
+    })
 }
 
 // Font Awesome setup
@@ -34,7 +51,7 @@ import {
   faLinkedinIn
 } from '@fortawesome/free-brands-svg-icons'
 
-// Add all required icons to the library
+// Register icons
 library.add(
   faUser,
   faEnvelope,
@@ -56,23 +73,29 @@ library.add(
 
     <div class="contact-container">
       <div class="contact-form">
-        <form @submit.prevent="submitForm">
-          <div class="form-group">
-            <label for="name">Name</label>
-            <input id="name" v-model="form.name" type="text" required />
+
+        <!--
+        hadi_sakka@live.ca
+        davidisdaddy123 
+        -->
+        <form @submit.prevent="sendEmail" class="contact-form">
+          <div class="input-group">
+            <font-awesome-icon icon="user" class="input-icon" />
+            <input v-model="form.name" type="text" name="user_name" placeholder="Your Name" required />
           </div>
 
-          <div class="form-group">
-            <label for="email">Email</label>
-            <input id="email" v-model="form.email" type="email" required />
+          <div class="input-group">
+            <font-awesome-icon icon="envelope" class="input-icon" />
+            <input v-model="form.email" type="email" name="user_email" placeholder="Your Email" required />
           </div>
 
-          <div class="form-group">
-            <label for="message">Message</label>
-            <textarea id="message" v-model="form.message" rows="5" required></textarea>
+          <div class="input-group">
+            <font-awesome-icon icon="comment-dots" class="input-icon" />
+            <textarea v-model="form.message" name="message" placeholder="Your Message" required></textarea>
           </div>
 
-          <button type="submit" class="submit-button">Send Message</button>
+          <button type="submit">Send</button>
+          <p v-if="status">{{ status }}</p>
         </form>
       </div>
 
@@ -82,31 +105,31 @@ library.add(
           <p>
             <font-awesome-icon icon="map-marker-alt" class="icon" />
             <a
-              href="https://www.google.com/maps?q=123+Main+Street,+Your+City,+Country"
+              href="https://www.google.com/maps?q=Ottawa+Ontario+Canada"
               target="_blank"
               rel="noopener"
             >
-              123 Main Street, Your City, Country
+              Ottawa, Ontario, Canada
             </a>
           </p>
 
           <p>
             <font-awesome-icon icon="phone-alt" class="icon" />
-            <a href="tel:+11234567890">(123) 456-7890</a>
+            <a href="tel:+14163181594">(416) 318 1594</a>
           </p>
           <p>
             <font-awesome-icon icon="envelope" class="icon" />
-            <a href="mailto:info@yourcompany.com">info@yourcompany.com</a>
+            <a href="mailto:hadi_sakka@live.ca">hadi_sakka@live.ca</a>
           </p>
         </div>
 
         <hr class="divider" />
 
         <div class="social-links">
-          <a href="https://facebook.com" target="_blank" aria-label="Facebook">
+          <a href="https://www.facebook.com/share/1WzF2zo5yB/?mibextid=wwXIfr" target="_blank" aria-label="Facebook">
             <font-awesome-icon :icon="['fab', 'facebook-f']" />
           </a>
-          <a href="https://instagram.com" target="_blank" aria-label="Instagram">
+          <a href="https://www.instagram.com/capitalbuildandrestoration?igsh=MW5nNG13YjV6MHdnMQ%3D%3D&utm_source=qr" target="_blank" aria-label="Instagram">
             <font-awesome-icon :icon="['fab', 'instagram']" />
           </a>
           <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn">
@@ -119,6 +142,61 @@ library.add(
 </template>
 
 <style scoped>
+.contact-form {
+  flex: 1;
+  min-width: 300px;
+  background: #fff;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+.contact-form form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+input,
+textarea {
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+button {
+  padding: 0.75rem;
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+button:hover {
+  background: #0056b3;
+}
+
+p[v-cloak],
+p[v-if="status"] {
+  margin-top: 1rem;
+  color: #28a745;
+  font-weight: 500;
+}
+
 .contact {
   padding: 5rem 2rem;
   background-color: transparent;
@@ -142,25 +220,42 @@ library.add(
 
 .contact-container {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column; /* stack vertically */
   gap: 3rem;
-  max-width: 1200px;
+  max-width: 900px;
   margin: 0 auto;
-  justify-content: center;
+  align-items: stretch;
 }
 
-.contact-form, .contact-info {
+.contact-info {
   flex: 1;
   min-width: 300px;
-  background: #fff;
+  background: rgb(255, 243, 230);
   padding: 2rem;
   border-radius: 12px;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
 }
 
-.contact-form form {
-  display: flex;
-  flex-direction: column;
+.contact-form {
+  background: rgb(255, 243, 230);
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  text-align: left;
+}
+input, textarea {
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+button {
+  padding: 0.75rem;
+  font-size: 1.1rem;
+  background: darkblue;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 8px;
 }
 
 .form-group {
@@ -175,28 +270,6 @@ label {
   color: #333;
 }
 
-input, textarea {
-  width: 100%;
-  padding: 0.75rem;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  font-size: 1rem;
-}
-
-.submit-button {
-  padding: 0.75rem;
-  background-color: #007BFF;
-  color: white;
-  font-weight: 600;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-.submit-button:hover {
-  background-color: #0056b3;
-}
 
 .contact-info {
   text-align: center;
@@ -258,5 +331,30 @@ input, textarea {
 .social-links a:hover {
   color: #007bff;
   transform: scale(1.1);
+}
+
+.input-group {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input-group input,
+.input-group textarea {
+  width: 100%;
+  padding: 1rem 1rem 1rem 2.5rem;
+  font-size: 1.1rem;
+}
+
+.input-group textarea {
+  min-height: 150px;
+  resize: vertical;
+}
+
+.input-icon {
+  position: absolute;
+  left: 0.75rem;
+  color: #007bff;
+  font-size: 1.1rem;
 }
 </style>

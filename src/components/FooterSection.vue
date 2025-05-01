@@ -14,8 +14,8 @@ export default {
   <footer class="footer">
     <div class="footer-top">
       <div class="footer-logo">
-        <img src="@/assets/McleansLogoFinal.svg" alt="Logo" />
-        <p>Serving you with quality construction and spotless cleaning.</p>
+        <img src="@/assets/CapitalBuildandRestorationServicesLogo.svg" alt="Logo" />
+        <p>Serving you with quality construction.</p>
       </div>
 
       <div class="footer-links">
@@ -31,15 +31,15 @@ export default {
       <div class="footer-socials">
         <h3>Follow Us</h3>
         <div class="social-icons">
-          <a href="https://facebook.com" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-          <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="https://www.facebook.com/share/1WzF2zo5yB/?mibextid=wwXIfr" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://www.instagram.com/capitalbuildandrestoration?igsh=MW5nNG13YjV6MHdnMQ%3D%3D&utm_source=qr" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
           <a href="https://linkedin.com" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
         </div>
       </div>
     </div>
 
     <div class="footer-bottom">
-      <p>&copy; {{ currentYear }} Mcleans building solutions. All rights reserved.</p>
+      <p>&copy; {{ currentYear }} Capital Build and Restoration Services. All rights reserved.</p>
     </div>
   </footer>
 </template>
@@ -62,7 +62,7 @@ export default {
   }
 
   .footer-logo img {
-    height: 50px;
+    height: 75px;
     margin-bottom: 1rem;
   }
 

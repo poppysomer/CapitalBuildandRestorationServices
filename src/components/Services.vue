@@ -88,11 +88,12 @@ export default {
   display: block;
   text-decoration: none;
   color: inherit;
-  background: #fff;
+  background: rgb(255, 243, 230);
   padding: 2rem;
   border-radius: 12px;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  max-width: 500px;
 }
 
 .service-card:hover {

@@ -2,14 +2,17 @@
 import { RouterLink } from 'vue-router';
 </script>
 
+
 <template>
   <section class="home">
     <div class="home-image">
-      <img src="@/assets/HomePagePicture.jpg" alt="Construction and Cleaning Team" />
+      <img src="@/assets/MainPagePicture.jpg" alt="Hero Image" />
     </div>
     <div class="home-content">
-      <h1>Building Dreams. Cleaning Spaces.</h1>
-      <p>We provide top-quality construction and cleaning services to bring your vision to life — and keep it spotless.</p>
+      <h1>Build with Confidence</h1>
+      <p>
+        Capital Build and Restoration Services delivers high-quality construction and remodeling tailored to your vision.
+      </p>
       <RouterLink to="/contact" class="cta-button">
         Get a Free Quote
       </RouterLink>
@@ -24,13 +27,25 @@ import { RouterLink } from 'vue-router';
   align-items: center;
   text-align: center;
   background-color: transparent;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.home-image {
+  width: 100%;
+  padding: 0 1rem; /* Horizontal padding */
+  box-sizing: border-box;
 }
 
 .home-image img {
   width: 100%;
-  height: 500px;
+  height: auto; /* Maintains aspect ratio */
+  max-height: 750px;
   object-fit: cover;
   object-position: center;
+  display: block;
+  border-radius: 8px; /* Optional for smooth corners */
 }
 
 .home-content {

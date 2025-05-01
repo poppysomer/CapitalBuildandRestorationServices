@@ -10,6 +10,7 @@ import CommercialConstructionView from '@/views/services/CommercialConstructionV
 import MaintenanceRepairsView from '@/views/services/MaintenanceRepairsView.vue';
 import PostConstructionCleaningView from '@/views/services/PostConstructionCleaningView.vue';
 import ResidentialConstructionView from '@/views/services/ResidentialConstructionView.vue';
+import ThankYouView from '@/views/ThankYouView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -33,6 +34,11 @@ const router = createRouter({
       path: '/contact',
       name: 'contact',
       component: ContactView,
+    },
+    {
+      path: '/thank-you',
+      name: 'thank-you',
+      component: ThankYouView,
     },
     { path: '/services', name: 'Services', component: ServicesView },
     { path: '/services/site-preparation', name: 'SitePreparation', component: SitePreparationView },

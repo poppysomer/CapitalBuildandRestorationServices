@@ -20,7 +20,7 @@ const isActive = (path) => route.path === path;
   <div id="app">
     <header class="header">
       <div class="logo">
-        <img src="@/assets/McleansLogoFinal.svg" alt="Logo" />
+        <img src="@/assets/CapitalBuildandRestorationServicesLogo.svg" alt="Logo" />
       </div>
       <nav class="nav-links">
         <RouterLink 
@@ -55,7 +55,7 @@ const isActive = (path) => route.path === path;
 }
 
 .logo img {
-  height: 80px;
+  height: 100px;
 }
 
 .nav-links {
@@ -74,13 +74,13 @@ const isActive = (path) => route.path === path;
 }
 
 .nav-link:hover {
-  background-color: #fdf1ae;
+  background-color: rgb(255, 243, 230);
   color: #000000;
 }
 
 /* NEW: Active link */
 .nav-link.active {
-  background-color: #fae1aa; /* Light blue for active */
+  background-color: rgb(248, 222, 194); /* Light blue for active */
   color: #000000;
 }
 </style>
