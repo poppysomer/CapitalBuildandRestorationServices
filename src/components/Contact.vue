@@ -220,11 +220,12 @@ p[v-if="status"] {
 
 .contact-container {
   display: flex;
+  flex-wrap: wrap;
   flex-direction: column; /* stack vertically */
-  gap: 3rem;
+  gap: 2rem;
   max-width: 900px;
   margin: 0 auto;
-  align-items: stretch;
+  justify-content: center;
 }
 
 .contact-info {
@@ -356,5 +357,50 @@ label {
   left: 0.75rem;
   color: #007bff;
   font-size: 1.1rem;
+}
+
+
+@media (max-width: 768px) {
+  .contact-container {
+    flex-direction: column;
+    align-items: center;
+    padding: 0 1rem;
+  }
+
+  .contact-form,
+  .contact-info {
+    width: 100%;
+    max-width: 100%;
+    padding: 1.5rem;
+  }
+
+  .contact-header h1 {
+    font-size: 2rem;
+  }
+
+  .contact-header p {
+    font-size: 1rem;
+    padding: 0 1rem;
+  }
+
+  .input-group input,
+  .input-group textarea {
+    font-size: 1rem;
+    padding: 0.75rem 0.75rem 0.75rem 2.5rem;
+  }
+
+  .input-icon {
+    font-size: 1rem;
+    left: 0.5rem;
+  }
+
+  button {
+    font-size: 1rem;
+    padding: 0.65rem;
+  }
+}
+
+* {
+  box-sizing: border-box;
 }
 </style>

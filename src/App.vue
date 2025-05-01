@@ -34,7 +34,6 @@ const isActive = (path) => route.path === path;
         </RouterLink>
       </nav>
     </header>
-
     <RouterView />
 
     <FooterSection />
@@ -48,11 +47,11 @@ const isActive = (path) => route.path === path;
   align-items: center;
   padding: 1rem 2rem;
   background-color: transparent;
-  position: sticky;
   top: 0;
   z-index: 1000;
   width: 100%;
 }
+
 
 .logo img {
   height: 80px;
