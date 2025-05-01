@@ -44,27 +44,49 @@ const isActive = (path) => route.path === path;
 <style scoped>
 .header {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: space-between;
-  padding: 1rem 3rem;
+  padding: 1rem 2rem;
   background-color: transparent;
-  box-shadow: none;
   position: sticky;
   top: 0;
   z-index: 1000;
+  width: 100%;
 }
 
 .logo img {
-  height: 100px;
+  height: 80px;
+  width: auto;
+  max-height: 12vh;
+  margin-bottom: 0.5rem;
 }
 
 .nav-links {
   display: flex;
-  gap: 2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.2rem;
+}
+
+/* Desktop styles (≥ 768px) */
+@media (min-width: 768px) {
+  .header {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .logo {
+    margin-bottom: 0; /* Remove bottom space on desktop */
+  }
+
+  .nav-links {
+    justify-content: flex-end;
+  }
 }
 
 .nav-link {
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   font-weight: 600;
   color: #000000;
   text-decoration: none;
@@ -78,9 +100,8 @@ const isActive = (path) => route.path === path;
   color: #000000;
 }
 
-/* NEW: Active link */
 .nav-link.active {
-  background-color: rgb(248, 222, 194); /* Light blue for active */
+  background-color: rgb(248, 222, 194);
   color: #000000;
 }
 </style>
