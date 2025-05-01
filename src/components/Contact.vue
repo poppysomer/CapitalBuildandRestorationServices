@@ -144,15 +144,15 @@ library.add(
 <style scoped>
 .contact-form {
   flex: 1;
-  min-width: 300px;
-  background: #fff;
+  width: 100%;
+  max-width: 100%;
+  background: rgb(255, 243, 230);
   padding: 2rem;
   border-radius: 12px;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  text-align: left;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  text-align: center;
 }
 
 .contact-form form {
@@ -160,6 +160,7 @@ library.add(
   flex-direction: column;
   gap: 1rem;
   margin-top: 1rem;
+  width: 100%;
 }
 
 input,
@@ -359,6 +360,12 @@ label {
   font-size: 1.1rem;
 }
 
+img,
+input,
+textarea {
+  max-width: 100%;
+  width: 100%;
+}
 
 @media (max-width: 768px) {
   .contact-container {
@@ -397,6 +404,19 @@ label {
   button {
     font-size: 1rem;
     padding: 0.65rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .contact-form,
+  .contact-info {
+    padding: 1rem;
+  }
+
+  .input-group input,
+  .input-group textarea {
+    padding-left: 2rem;
+    font-size: 1rem;
   }
 }
 
