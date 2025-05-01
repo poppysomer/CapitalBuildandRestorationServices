@@ -81,17 +81,17 @@ library.add(
         <form @submit.prevent="sendEmail" class="contact-form">
           <div class="input-group">
             <font-awesome-icon icon="user" class="input-icon" />
-            <input v-model="form.name" type="text" name="user_name" placeholder="Your Name" required />
+            <input v-model="form.name" type="text" name="user_name" placeholder="Name" required />
           </div>
 
           <div class="input-group">
             <font-awesome-icon icon="envelope" class="input-icon" />
-            <input v-model="form.email" type="email" name="user_email" placeholder="Your Email" required />
+            <input v-model="form.email" type="email" name="user_email" placeholder="Email" required />
           </div>
 
           <div class="input-group">
             <font-awesome-icon icon="comment-dots" class="input-icon" />
-            <textarea v-model="form.message" name="message" placeholder="Your Message" required></textarea>
+            <textarea v-model="form.message" name="message" placeholder="Description of services required" required></textarea>
           </div>
 
           <button type="submit">Send</button>
