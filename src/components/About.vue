@@ -8,7 +8,7 @@
       <div class="about-text">
         <h1>About Us</h1>
         <p>
-          At <strong>Mcleans building solutions</strong>, we are passionate about delivering quality construction work and pristine cleaning services. 
+          At <strong>Capital Build and Restoration Services</strong>, we are passionate about delivering quality construction work and pristine cleaning services. 
           With years of experience, we pride ourselves on craftsmanship, reliability, and customer satisfaction.
         </p>
         <ul class="values-list">
